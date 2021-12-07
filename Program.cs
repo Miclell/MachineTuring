@@ -85,10 +85,19 @@ namespace MachineTuring
     {
         static void Main(string[] args)
         {
-            Ribbon r = new("01", "000111000", 9, 0);
+            Console.WriteLine("Введите алфавит");
+            string alphabet = Console.ReadLine();
 
-            //01>1;11>2
-            //00>0;11>2
+            Console.WriteLine("Введите начальное значение");
+            string iniValue = Console.ReadLine();
+
+            Console.WriteLine("Введите размер ленты");
+            int size = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Введите индекс положения головки, где 1 - 0");
+
+            int startPoint = int.Parse(Console.ReadLine());
+            Ribbon r = new(alphabet, iniValue, size, startPoint);
 
             r.AddCommands();
 
