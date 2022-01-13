@@ -24,7 +24,9 @@ namespace MachineTuring
         }
 
         private void AddCommand(string command) =>
-            commands.Add(command.Split(';').ToDictionary(x => x[0].ToString(), x => x[1..]));
+            commands.Add(command.Remove(command.IndexOf(" "), command.IndexOf(" "))
+                                                                                .TrimEnd(';').Split(';')
+                                                                                    .ToDictionary(x => x[0].ToString(), x => x[1..]));
 
         public void AddCommands()
         {
@@ -77,7 +79,7 @@ namespace MachineTuring
                     break;
             }
 
-            Console.WriteLine("\nРезультат - " +String.Join(null, value));
+            Console.WriteLine("\nРезультат - " + String.Join(null, value));
         }
     }
 
@@ -95,8 +97,8 @@ namespace MachineTuring
             int size = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите индекс положения головки, где 1 - 0");
-
             int startPoint = int.Parse(Console.ReadLine());
+
             Ribbon r = new(alphabet, iniValue, size, startPoint);
 
             r.AddCommands();
